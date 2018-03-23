@@ -4,5 +4,5 @@ Route::get('/', function () {
   return view('welcome');
 });
 
-Route::get('home', 'HomeController@index');
-Route::get('home/{id}', 'HomeController@show');
+Route::get('blog', 'BlogController@index');
+Route::get('blog/{id}', 'BlogController@show');

@@ -7,8 +7,8 @@
   <body>
     <header>
       <nav>
-        <a href="/">Laravel</a>
-        <a href="home">Home</a>
+        <a href="/">Home</a>
+        <a href="/blog">Blog</a>
       </nav>
     </header>
     <br>
