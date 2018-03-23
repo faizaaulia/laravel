@@ -4,12 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Blog;
 
 class BlogController extends Controller
 {
     public function index()
     {
-      return view('blog');
+      $blog = Blog::all();
+
+      return view('blog', ['blog' => $blog]);
     }
 
     public function show($id)
@@ -28,8 +31,8 @@ class BlogController extends Controller
       //delete
       // DB::table('user')->where('id', '3')->delete();
 
-      $users = DB::table('user')->get();
-
-      return view('single', ['blog' => $id, 'users' => $users]);
+      $blog = Blog::find($id);
+      
+      return view('single', ['blog' => $blog]);
     }
 }
