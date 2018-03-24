@@ -40,7 +40,14 @@ class BlogController extends Controller
       // $blog->delete();
 
       //delete ke dua
-      Blog::destroy(5);
+      // Blog::destroy(5);
+
+      //soft delete (menghilangkan data, tapi di db tetap ada)
+      // $blog = Blog::find(4);
+      // $blog->delete();
+
+      //restore soft deleted
+      // Blog::withTrashed()->restore();
 
       $blog = Blog::all();
 

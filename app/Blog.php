@@ -3,13 +3,18 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Blog extends Model
 {
-    protected $table = 'blog'; //kalo nama tabel di db "blogs", gausah pake protected. kalo bukan blogs, harus pake protected
-    public $timestamps = false; //created_at dan updated_at gaada
+  //soft delete
+  use SoftDeletes;
+  protected $dates = ['deleted_at'];
 
-    //insert assignment
-    // protected $fillable = ['title', 'description']; //whitelist (yang boleh diisi)
-    protected $guarded = []; //blacklist (yang gaboleh diisi)
+  protected $table = 'blog'; //kalo nama tabel di db "blogs", gausah pake protected. kalo bukan blogs, harus pake protected
+  public $timestamps = false; //created_at dan updated_at gaada
+
+  //insert assignment
+  // protected $fillable = ['title', 'description']; //whitelist (yang boleh diisi)
+  protected $guarded = []; //blacklist (yang gaboleh diisi)
 }
