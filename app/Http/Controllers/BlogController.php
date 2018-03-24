@@ -51,7 +51,7 @@ class BlogController extends Controller
 
       $blog = Blog::all();
 
-      return view('blog', ['blog' => $blog]);
+      return view('blog/blog', ['blog' => $blog]);
     }
 
     public function show($id)
@@ -72,6 +72,22 @@ class BlogController extends Controller
 
       $blog = Blog::findOrFail($id); //kalo pake find() tampilan errornya banyak, kalo findOrFail error "Not Found"
 
-      return view('single', ['blog' => $blog]);
+      return view('blog/single', ['blog' => $blog]);
+    }
+
+    public function edit($id)
+    {
+      $blog = Blog::find($id);
+
+      return view('blog/edit', ['blog' => $blog]);
+    }
+
+    public function update(Request $request, $id)
+    {
+      Blog::find($id)->update([
+        'title' => $request->title,
+        'description' => $request->description
+      ]);
+      dd('success');
     }
 }
