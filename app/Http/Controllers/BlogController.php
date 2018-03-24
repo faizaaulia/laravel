@@ -42,16 +42,27 @@ class BlogController extends Controller
       //delete ke dua
       // Blog::destroy(5);
 
-      //soft delete (menghilangkan data, tapi di db tetap ada)
-      // $blog = Blog::find(4);
-      // $blog->delete();
-
       //restore soft deleted
-      // Blog::withTrashed()->restore();
+      //Blog::withTrashed()->restore();
 
       $blog = Blog::all();
 
       return view('blog/blog', ['blog' => $blog]);
+    }
+
+    public function create()
+    {
+      return view('blog/create');
+    }
+
+    public function store(Request $request)
+    {
+      Blog::create([
+        'title' => $request->title,
+        'description' => $request->description
+      ]);
+
+      return redirect('blog');
     }
 
     public function show($id)
@@ -88,6 +99,18 @@ class BlogController extends Controller
         'title' => $request->title,
         'description' => $request->description
       ]);
-      dd('success');
+      return redirect('blog/' . $id);
+    }
+
+    public function destroy($id)
+    {
+      Blog::destroy($id);
+      return redirect('blog');
+    }
+
+    public function delete($id)
+    {
+      Blog::destroy($id);
+      return redirect('blog');
     }
 }
