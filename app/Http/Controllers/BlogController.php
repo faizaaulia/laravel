@@ -107,10 +107,4 @@ class BlogController extends Controller
       Blog::destroy($id);
       return redirect('blog');
     }
-
-    public function delete($id)
-    {
-      Blog::destroy($id);
-      return redirect('blog');
-    }
 }
